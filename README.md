@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
+# Página de la Doctora
 
-## Project info
+Sitio web profesional desarrollado con React, TypeScript y Vite para la consulta médica.
 
-**URL**: https://lovable.dev/projects/b141769d-b10f-4f8b-a8ba-3070e13597e6
+## 🚀 Despliegue en GitHub Pages
 
-## How can I edit this code?
+Este proyecto está configurado para desplegarse automáticamente en GitHub Pages.
 
-There are several ways of editing your application.
+### Configuración Inicial
 
-**Use Lovable**
+1. **Actualizar el nombre del repositorio**: 
+   - Cambia `[tu-usuario]` en `package.json` por tu nombre de usuario de GitHub
+   - Ejemplo: `"homepage": "https://johndoe.github.io/pagina_doctora"`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b141769d-b10f-4f8b-a8ba-3070e13597e6) and start prompting.
+2. **Habilitar GitHub Pages**:
+   - Ve a Settings > Pages en tu repositorio
+   - Source: Deploy from a branch
+   - Branch: `gh-pages`
+   - Folder: `/ (root)`
 
-Changes made via Lovable will be committed automatically to this repo.
+### Deploy Automático
 
-**Use your preferred IDE**
+El proyecto incluye GitHub Actions que se ejecutan automáticamente al hacer push a la rama `main`.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Deploy Manual
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+# Instalar dependencias
+npm install
 
-Follow these steps:
+# Build para producción
+npm run build:prod
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Deploy (requiere gh-pages instalado globalmente)
+npm run deploy:setup
+npm run deploy
 ```
 
-**Edit a file directly in GitHub**
+## 🛠️ Desarrollo
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Instalar dependencias
+npm install
 
-**Use GitHub Codespaces**
+# Servidor de desarrollo
+npm run dev
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Build para desarrollo
+npm run build:dev
 
-## What technologies are used for this project?
+# Preview del build
+npm run preview
+```
 
-This project is built with:
+## 📁 Estructura del Proyecto
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/     # Componentes reutilizables
+├── pages/         # Páginas de la aplicación
+├── hooks/         # Custom hooks
+├── lib/           # Utilidades y configuraciones
+└── main.tsx       # Punto de entrada
+```
 
-## How can I deploy this project?
+## 🔧 Tecnologías
 
-Simply open [Lovable](https://lovable.dev/projects/b141769d-b10f-4f8b-a8ba-3070e13597e6) and click on Share -> Publish.
+- **React 18** - Biblioteca de UI
+- **TypeScript** - Tipado estático
+- **Vite** - Build tool y dev server
+- **Tailwind CSS** - Framework de CSS
+- **Radix UI** - Componentes accesibles
+- **React Router** - Enrutamiento
+- **React Query** - Manejo de estado del servidor
 
-## Can I connect a custom domain to my Lovable project?
+## 📝 Notas Importantes
 
-Yes, you can!
+- El proyecto está configurado para funcionar en la subruta `/pagina_doctora/` en GitHub Pages
+- Las rutas están configuradas para manejar correctamente el routing de SPA
+- El build está optimizado para producción con code splitting
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🐛 Solución de Problemas
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Error 404 en rutas directas
+- Verifica que el archivo `404.html` esté en la carpeta `public/`
+- Asegúrate de que GitHub Pages esté configurado correctamente
+
+### Assets no se cargan
+- Verifica que la `base` URL en `vite.config.ts` coincida con el nombre del repositorio
+- Asegúrate de que el `basename` en `App.tsx` esté configurado correctamente
+
+### Build falla
+- Verifica que todas las dependencias estén instaladas
+- Ejecuta `npm run build:prod` para ver errores específicos
