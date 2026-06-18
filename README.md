@@ -1,94 +1,128 @@
-# Página de la Doctora
+# Doc Vista Showcase
 
-Sitio web profesional desarrollado con React, TypeScript y Vite para la consulta médica.
+Sitio web de demostración desarrollado por [Docabyte](https://github.com/DocabyteCompany) para mostrar cómo puede verse la presencia online de un profesional de la salud. El ejemplo incluye una landing page de una cardióloga con secciones de servicios, perfil profesional, testimonios y contacto.
 
-## 🚀 Despliegue en GitHub Pages
+> **Nota:** El contenido (textos, imágenes y datos de contacto) es ficticio y sirve únicamente como referencia visual y técnica.
 
-Este proyecto está configurado para desplegarse automáticamente en GitHub Pages.
+## ¿Qué incluye?
 
-### Configuración Inicial
+La página es una **single-page application (SPA)** con las siguientes secciones:
 
-1. **Actualizar el nombre del repositorio**: 
-   - Cambia `[tu-usuario]` en `package.json` por tu nombre de usuario de GitHub
-   - Ejemplo: `"homepage": "https://johndoe.github.io/pagina_doctora"`
+| Sección | Descripción |
+|---------|-------------|
+| **Hero** | Presentación principal con llamadas a la acción |
+| **Services** | Catálogo de servicios médicos en tarjetas |
+| **About** | Perfil profesional, credenciales y logros |
+| **Testimonials** | Opiniones de pacientes |
+| **Contact** | Formulario de contacto e información de la consulta |
 
-2. **Habilitar GitHub Pages**:
-   - Ve a Settings > Pages en tu repositorio
-   - Source: Deploy from a branch
-   - Branch: `gh-pages`
-   - Folder: `/ (root)`
+## Requisitos previos
 
-### Deploy Automático
+- [Node.js](https://nodejs.org/) 18 o superior
+- npm (incluido con Node.js)
 
-El proyecto incluye GitHub Actions que se ejecutan automáticamente al hacer push a la rama `main`.
+## Inicio rápido
 
-### Deploy Manual
+```powershell
+# Clonar el repositorio
+git clone https://github.com/DocabyteCompany/doc-vista-showcase.git
+cd doc-vista-showcase
 
-```bash
 # Instalar dependencias
 npm install
 
-# Build para producción
-npm run build:prod
+# Iniciar servidor de desarrollo (http://localhost:8080)
+npm run dev
+```
 
-# Deploy (requiere gh-pages instalado globalmente)
-npm run deploy:setup
+## Scripts disponibles
+
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Servidor de desarrollo con recarga en caliente |
+| `npm run build` | Build de producción |
+| `npm run build:prod` | Build de producción (modo explícito) |
+| `npm run preview` | Vista previa del build generado |
+| `npm run lint` | Análisis estático con ESLint |
+| `npm run deploy` | Build y publicación manual en GitHub Pages |
+
+## Estructura del proyecto
+
+```
+doc-vista-showcase/
+├── public/                  # Archivos estáticos (404.html para GitHub Pages)
+├── src/
+│   ├── components/          # Componentes de la landing (Hero, Services, etc.)
+│   │   └── ui/              # Componentes base (shadcn/ui + Radix)
+│   ├── pages/               # Páginas de la aplicación
+│   ├── hooks/               # Hooks personalizados
+│   ├── lib/                 # Utilidades compartidas
+│   ├── App.tsx              # Enrutamiento y proveedores globales
+│   └── main.tsx             # Punto de entrada
+├── .github/workflows/       # CI/CD para despliegue automático
+└── vite.config.ts           # Configuración de Vite y rutas base
+```
+
+## Tecnologías
+
+- **React 18** + **TypeScript**
+- **Vite** — bundler y servidor de desarrollo
+- **Tailwind CSS** — estilos utilitarios
+- **shadcn/ui** + **Radix UI** — componentes accesibles
+- **React Router** — enrutamiento de la SPA
+- **Lucide React** — iconografía
+
+## Despliegue en GitHub Pages
+
+El proyecto incluye un workflow de GitHub Actions (`.github/workflows/deploy.yml`) que compila y publica automáticamente en la rama `gh-pages` cada vez que se hace push a `main`.
+
+### Configuración en GitHub
+
+1. Ve a **Settings → Pages** en el repositorio.
+2. En **Source**, selecciona la rama `gh-pages` y la carpeta `/ (root)`.
+3. La URL de publicación será:
+
+   ```
+   https://docabytecompany.github.io/doc-vista-showcase/
+   ```
+
+### Alinear la ruta base
+
+La ruta base de producción está configurada como `/doc-vista-showcase/` en:
+
+- `vite.config.ts` → propiedad `base`
+- `src/App.tsx` → variable `basename`
+- `package.json` → campo `homepage`
+
+Si renombras el repositorio, actualiza esos tres valores para que coincidan con el nuevo nombre.
+
+### Despliegue manual
+
+```powershell
+npm install
+npm run build:prod
 npm run deploy
 ```
 
-## 🛠️ Desarrollo
+## Solución de problemas
 
-```bash
-# Instalar dependencias
+### Error 404 al abrir una ruta directamente
+
+GitHub Pages no enruta SPAs de forma nativa. El archivo `public/404.html` redirige las rutas al `index.html`. Verifica que exista y que GitHub Pages esté activo en la rama `gh-pages`.
+
+### Los assets no cargan (CSS, JS o imágenes rotas)
+
+La propiedad `base` en `vite.config.ts` y el `basename` en `App.tsx` deben coincidir con la ruta del repositorio en GitHub Pages (por ejemplo, `/doc-vista-showcase/`).
+
+### El build falla
+
+```powershell
 npm install
-
-# Servidor de desarrollo
-npm run dev
-
-# Build para desarrollo
-npm run build:dev
-
-# Preview del build
-npm run preview
+npm run build:prod
 ```
 
-## 📁 Estructura del Proyecto
+Revisa los errores en consola. Suele deberse a dependencias sin instalar o errores de TypeScript.
 
-```
-src/
-├── components/     # Componentes reutilizables
-├── pages/         # Páginas de la aplicación
-├── hooks/         # Custom hooks
-├── lib/           # Utilidades y configuraciones
-└── main.tsx       # Punto de entrada
-```
+## Licencia
 
-## 🔧 Tecnologías
-
-- **React 18** - Biblioteca de UI
-- **TypeScript** - Tipado estático
-- **Vite** - Build tool y dev server
-- **Tailwind CSS** - Framework de CSS
-- **Radix UI** - Componentes accesibles
-- **React Router** - Enrutamiento
-- **React Query** - Manejo de estado del servidor
-
-## 📝 Notas Importantes
-
-- El proyecto está configurado para funcionar en la subruta `/pagina_doctora/` en GitHub Pages
-- Las rutas están configuradas para manejar correctamente el routing de SPA
-- El build está optimizado para producción con code splitting
-
-## 🐛 Solución de Problemas
-
-### Error 404 en rutas directas
-- Verifica que el archivo `404.html` esté en la carpeta `public/`
-- Asegúrate de que GitHub Pages esté configurado correctamente
-
-### Assets no se cargan
-- Verifica que la `base` URL en `vite.config.ts` coincida con el nombre del repositorio
-- Asegúrate de que el `basename` en `App.tsx` esté configurado correctamente
-
-### Build falla
-- Verifica que todas las dependencias estén instaladas
-- Ejecuta `npm run build:prod` para ver errores específicos
+Proyecto privado de Docabyte. Consulta con el equipo antes de reutilizar o redistribuir el código.

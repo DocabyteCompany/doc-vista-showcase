@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Determinar el basename para GitHub Pages
-const basename = import.meta.env.PROD ? '/pagina_doctora' : '';
+const basename = import.meta.env.PROD ? '/doc-vista-showcase' : '';
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
