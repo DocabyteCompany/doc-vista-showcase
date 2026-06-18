@@ -1,0 +1,1 @@
+import{t as e}from"./rolldown-runtime-Bh1tDfsg.js";import{a as t}from"./router-LMk2NHWw.js";var n=e((e=>{var n=t();e.createRoot=n.createRoot,e.hydrateRoot=n.hydrateRoot}));export{n as t};
