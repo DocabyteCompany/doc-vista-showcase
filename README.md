@@ -18,7 +18,7 @@ La página es una **single-page application (SPA)** con las siguientes secciones
 
 ## Requisitos previos
 
-- [Node.js](https://nodejs.org/) 18 o superior
+- [Node.js](https://nodejs.org/) 20.19+ o 22.12+ (requerido por Vite 8)
 - npm (incluido con Node.js)
 
 ## Inicio rápido
